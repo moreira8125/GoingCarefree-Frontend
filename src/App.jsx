@@ -7,7 +7,7 @@ import Admin from "./pages/Admin"
 import Contacts from "./pages/Contacts"
 import {Routes, Route} from 'react-router-dom'
 
-import './App.css'
+
 
 
 
