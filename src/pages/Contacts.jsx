@@ -1,29 +1,80 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import greenTick from '../../public/images/greenTick.png'
+
 import "../styles/contacts.css"
 
 function Contacts() {
-  return (
-    <div className='contactContainer'>
-     <h1>Contact Us</h1>
-     <form>
-      <label><p>Name:</p>
-        <input type="text" />
-      </label>
-      <label> <p>Email:</p>
-        <input type="text" />
-      </label>
-      <label id='labelMessage'> <p>How can we help?:</p>
-     
-        <textarea name="" id="" cols="80" rows="10"></textarea>
-        
-      </label>
-  
-      <div className='buttonContainer'>
-  <button>Send</button>
-</div>
 
-     </form>
-    </div>
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleOutsideClick = () => {
+    setSubmitted(false);
+  };
+
+
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    setName('')
+    setEmail('')
+    setMessage('')
+    setSubmitted(true)
+
+    setTimeout(() => {
+      setSubmitted(false)
+    }, 3000)
+
+    document.addEventListener('click', () => {
+      clearTimeout();
+      handleOutsideClick();
+    },);
+  }
+
+  return (
+    <>
+      <div className='contactContainer'>
+        <h1>Contact Us👇</h1>
+        <form onSubmit={handleSubmit}>
+          <label>Name:
+            <input type="text" value={name} onChange={(e) => { setName(e.target.value) }} />
+          </label>
+          <label> Email:
+            <input type="text" value={email} onChange={(e) => { setEmail(e.target.value) }} />
+          </label>
+          <label id='labelMessage'> How can we help?:
+
+            <textarea name="" id="" cols="65" rows="8" value={message} onChange={(e) => { setMessage(e.target.value) }} ></textarea>
+
+          </label>
+
+          <div className='buttonContainer'>
+            <button>Send</button>
+          </div>
+
+
+        </form>
+
+        
+      </div>
+      <footer>
+      <h2>Reach us</h2>
+  <p>+51 222 034 897</p>
+  <p>info@goingcarefree.com</p>
+  <p>10-11 Spain St, Porto W1T 1DN, Portugal</p>
+      </footer>
+      {submitted && <div className='messageConfirmation'>
+        <img src={greenTick} />
+        <h1>Thank you!</h1>
+        <h2>You message was sent succesfully</h2>
+      </div>}
+
+ 
+    </>
   )
 }
 
