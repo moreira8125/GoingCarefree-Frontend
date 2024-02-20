@@ -1,6 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 img{
     width: 40em;
@@ -13,43 +10,29 @@ img{
     margin: 5em auto;
     align-items: center;
     gap: 1em;
-    border: 2px solid black;
+    border: 2px solid #072439;
     padding: 1em 2em;
     border-radius: 2em;
 }
 
 #package:hover{
-    background-color: #7aa;
+    background-color: #072439;
 }
 
-span{
-    border: 1px solid black;
-    border-radius: 0.9em;
-    padding: 0.3em;
-}
-
-
-.link{
-    color: white;
-}
-
-.destinationsForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.destinationsForm input {
-    width: 100%;
-    margin-bottom: 1em;
-    text-align: center;
-}
-.destinationsForm select {
-    width: 100%; 
-    margin-bottom: 1em; 
+#package:hover .packageInfo{
+    color: #EEF0FF;
+    text-decoration: none;
 }
 
 .packageInfo{
-    color: black;
+    color: #072439;
 }
+
+.link{
+    text-decoration: none;
+}
+
+
+
+
 
