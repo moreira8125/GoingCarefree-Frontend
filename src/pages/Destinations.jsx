@@ -60,13 +60,16 @@ function Destinations() {
 
   return (
     <div>
+      <h1 className="mb-8 font-bold leading-none tracking-tight text-navbar_color md:text-3xl lg:text-5xl">
+        Destinations
+      </h1>
       <Link>
-        <h1
-          className="mb-4 text-xl font-extrabold leading-none tracking-tight text-navbar_color md:text-2xl lg:text-4xl hover:underline"
+        <h3
+          className="mb-4 font-bold leading-none tracking-tight text-navbar_color md:text-xl lg:text-2xl hover:underline"
           onClick={handleTitleClick}
         >
           Click Here For Your Perfect Vacation
-        </h1>
+        </h3>
       </Link>
 
       {showForm && (
