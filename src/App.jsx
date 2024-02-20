@@ -7,7 +7,7 @@ import Admin from "./pages/Admin"
 import Contacts from "./pages/Contacts"
 import {Routes, Route} from 'react-router-dom'
 
-import './App.css'
+// import './App.css'
 
 
 
@@ -21,8 +21,10 @@ function App() {
     <Route path="/" element={<Homepage/>}/>
     <Route path="/destinations" element={<Destinations/>}/>
     <Route path="/destinations/:id" element={<DestinationDetail/>}/>
+
     <Route path="/reviews" element={<Reviews/>}/>
     <Route path="/admin" element={<Admin/>}/>
+    
     <Route path="/contacts" element={<Contacts/>}/>
   
     </Routes>
