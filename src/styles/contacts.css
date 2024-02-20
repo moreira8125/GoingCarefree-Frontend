@@ -9,15 +9,13 @@ body {
 
 .contactContainer {
     margin: 5rem 0rem 0rem 0rem;
-    
-width: 40%;
-transform: translate(70%);
+    width: 40%;
+    transform: translate(70%);
     height: 100%;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-
     background-color: rgba(255, 255, 255, 0.6);
     padding-right: 1%;
 }
@@ -27,8 +25,6 @@ transform: translate(70%);
     margin-bottom: 0.5rem;
     margin-left: 2.5rem;
     font-size: 3rem;
-
-
 }
 
 .contactContainer form {
@@ -45,7 +41,6 @@ transform: translate(70%);
     display: flex;
     flex-direction: column;
     margin: 1rem;
-
     font-weight: bold;
     font-size: 1.5rem;
     color: #519cf9;
@@ -62,7 +57,7 @@ transform: translate(70%);
     font-size: 75%;
     margin-top: 0.5rem;
     text-indent: 5%;
-    
+
 }
 
 #labelMessage {
@@ -118,25 +113,25 @@ button:hover {
 
 }
 
-.emailMessage{
+.emailMessage {
 
     z-index: 1000;
 }
 
-.messageConfirmation{
-background-color: rgb(255, 255, 255);
-display: flex;
-flex-direction: column;
-width: 25%;
-align-items: center;
-margin-left: 37.5%;
-border-radius: 20px;
+.messageConfirmation {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    align-items: center;
+    margin-left: 37.5%;
+    border-radius: 20px;
 
 
-padding: 2rem 0rem 0rem 0rem;
-position: absolute;
-top: 30%; 
-border: 5px solid rgba(0, 128, 255, 0.2);
+    padding: 2rem 0rem 0rem 0rem;
+    position: absolute;
+    top: 30%;
+    border: 5px solid rgba(0, 128, 255, 0.2);
 
 
 
@@ -145,17 +140,17 @@ border: 5px solid rgba(0, 128, 255, 0.2);
 
 }
 
-.messageConfirmation img{
+.messageConfirmation img {
 
     width: 100px;
 }
 
-.messageConfirmation h2{
+.messageConfirmation h2 {
     margin-top: 0;
     color: grey;
 }
 
-.reachUs{
+.reachUs {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -166,37 +161,39 @@ border: 5px solid rgba(0, 128, 255, 0.2);
     transform: translate(20%);
 }
 
-.reachUs h2{
-  
+.reachUs h2 {
+
     padding-top: 2%;
     margin-bottom: 1%;
     margin-top: 0;
 }
 
-.reachUs p{
+.reachUs p {
     margin-top: 0;
     margin-bottom: 1%;
 
 }
 
-footer{
-    background-color: white;
+footer {
+    background-color: rgba(255, 255, 255, 0.6);
     bottom: 0;
     position: fixed;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+
 
 }
 
-footer h2{
+footer h2 {
     padding-top: 1%;
     margin-bottom: 1%;
     margin-top: 0;
 }
 
-footer p{
+footer p {
     margin-top: 0;
     margin-bottom: 1%;
 }

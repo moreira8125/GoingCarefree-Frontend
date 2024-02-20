@@ -44,7 +44,7 @@ function Contacts() {
             <input type="text" value={name} onChange={(e) => { setName(e.target.value) }} />
           </label>
           <label> Email:
-            <input type="text" value={email} onChange={(e) => { setEmail(e.target.value) }} />
+            <input type="email" value={email} onChange={(e) => { setEmail(e.target.value) }} />
           </label>
           <label id='labelMessage'> How can we help?:
 
