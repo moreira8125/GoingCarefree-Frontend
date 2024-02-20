@@ -7,7 +7,7 @@ body{
 }
 
 .navContainer{
-    background-color: black;
+    background-color: #072439;
     display: flex;
     width: 100%;
     border-radius: 5px;
@@ -36,19 +36,14 @@ body{
 
  .navlink{
     margin: 1.5rem 5rem 0rem 0rem ;
-    color: white;
+    color: #858585;
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: bolder;
 }
 
 .navlink:hover{
-    color: #b1d1f5 ;
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-decoration-line: 6px;
-    text-underline-offset: 8px;
-    text-decoration-thickness: 1px;
+    color: #ffffff ;
 
  
 
@@ -56,8 +51,8 @@ body{
 }
 
 .active{
-    color: #63a5f6 ;
-    /* text-decoration: underline; */
+    color: #ffffff ;
+  
    
 
 
