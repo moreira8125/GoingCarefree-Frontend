@@ -60,12 +60,12 @@ function Destinations() {
 
   return (
     <div>
-      <h1 className="mb-8 font-bold leading-none tracking-tight text-navbar_color md:text-3xl lg:text-5xl">
+      <h1 className="mb-8 mt-6 font-bold leading-none tracking-tight text-navbar_color md:text-3xl lg:text-5xl text-center">
         Destinations
       </h1>
       <Link>
         <h3
-          className="mb-4 font-bold leading-none tracking-tight text-navbar_color md:text-xl lg:text-2xl hover:underline"
+          className="mb-4 font-bold leading-none tracking-tight text-navbar_color md:text-xl lg:text-2xl hover:underline text-center"
           onClick={handleTitleClick}
         >
           Click Here For Your Perfect Vacation
@@ -78,7 +78,6 @@ function Destinations() {
             Budget
             <input
               type="number"
-              placeholder="Your budget"
               onChange={(e) => {
                 setBudget(e.target.value);
               }}
