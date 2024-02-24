@@ -5,6 +5,11 @@ function Reviews() {
   const [review, setReview] = useState([]);
   const [destinations, setDestinations] = useState([]);
   const [countries, setCountries] = useState([]);
+  const [newName, setNewName] = useState("");
+  const [newCountry, setNewCountry] = useState("");
+  const [newPackage, setNewPackage] = useState("");
+  const [newComment, setNewComment] = useState("");
+  const [newRating, setNewRating] = useState(0);
 
   //useEffect to get the REVIEWS
   useEffect(() => {
@@ -39,7 +44,6 @@ function Reviews() {
       .get("http://localhost:5005/cities")
       .then((result) => {
         setDestinations(result.data);
-        console.log(destinations);
       })
       .catch((err) => {
         console.log(err);
@@ -48,6 +52,27 @@ function Reviews() {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    const newReview = {
+      name: newName,
+      flag: newCountry,
+      package: newPackage,
+      comment: newComment,
+      rate: newRating,
+    };
+
+    axios
+      .post("http://localhost:5005/reviews", newReview)
+      .then(() => {
+        return axios.get("http://localhost:5005/reviews");
+      })
+      .then((result) => {
+        setReview(result.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log(review);
   }
 
   return (
@@ -65,11 +90,11 @@ function Reviews() {
                   {oneReview.name}
                 </h2>
               </div>
-              <div className="flex justify-start mb-2">
+              <div className="flex justify-start mb-2 items-center">
                 <h3 className="mr-4 text-md font-semibold text-navbar_color">
                   {oneReview.package}
                 </h3>
-                <p>{oneReview.rate}</p>
+                <img src={oneReview.rate} className="w-32 h-auto"></img>
               </div>
 
               <p className="text-left text-sm">{oneReview.comment}</p>
@@ -83,7 +108,7 @@ function Reviews() {
         </h2>
 
         <form
-          className="w-48 mx-auto text-center flex flex-col items-center"
+          className="w-48 mx-auto text-center flex flex-col items-center mb-12"
           onSubmit={handleSubmit}
         >
           <label className="mb-2 text-md font-medium text-gray-600 ">
@@ -91,16 +116,29 @@ function Reviews() {
             <input
               type="text"
               className="border text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-center dark:text-white mb-4"
+              onChange={(e) => {
+                setNewName(e.target.value);
+              }}
+              required
             />
           </label>
 
           <label className="mb-2 text-md font-medium text-gray-600 ">
             Country
-            <select className="border text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-center dark:text-white mb-4">
+            <select
+              className="border text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-center dark:text-white mb-4"
+              onChange={(e) => {
+                setNewCountry(e.target.value);
+              }}
+              required
+            >
               <option value=""></option>
               {countries.map((result) => {
                 return (
-                  <option key={result._id} value={result.name.common}>
+                  <option
+                    key={result._id}
+                    value={`https://flagpedia.net/data/flags/icon/72x54/${result.alpha2Code.toLowerCase()}.png`}
+                  >
                     {result.name.common}
                   </option>
                 );
@@ -110,7 +148,13 @@ function Reviews() {
 
           <label>
             Package
-            <select className="border text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-center dark:text-white mb-4">
+            <select
+              className="border text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-center dark:text-white mb-4"
+              onChange={(e) => {
+                setNewPackage(e.target.value);
+              }}
+              required
+            >
               <option value=""></option>
               {destinations.map((result) => {
                 return (
@@ -122,14 +166,39 @@ function Reviews() {
             </select>
           </label>
 
+          <label>
+            Rating
+            <select
+              className="border text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 dark:text-white mb-4"
+              onChange={(e) => {
+                setNewRating(e.target.value);
+              }}
+              required
+            >
+              <option value=""></option>
+              <option value="../../public/images/star1.png">⭐</option>
+              <option value="../../public/images/star2.png">⭐⭐</option>
+              <option value="../../public/images/star3.png">⭐⭐⭐</option>
+              <option value="../../public/images/star4.png">⭐⭐⭐⭐</option>
+              <option value="../../public/images/star5.png">⭐⭐⭐⭐⭐</option>
+            </select>
+          </label>
+
           <label className="mb-2 text-md font-medium text-gray-600 ">
             Comment
             <textarea
               cols="50"
               rows="10"
               className="border text-gray-900 text-sm rounded-lg block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 dark:text-white mb-4"
+              onChange={(e) => {
+                setNewComment(e.target.value);
+              }}
             ></textarea>
           </label>
+
+          <button className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-navbar_color hover:bg-blue-400 mt-2">
+            Send
+          </button>
         </form>
       </div>
     </div>

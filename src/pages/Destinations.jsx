@@ -9,7 +9,7 @@ function Destinations() {
   const [budget, setBudget] = useState("");
   const [type, setType] = useState("");
   const [country, setCountry] = useState("");
-  const [showForm, setShowForm] = useState(true);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     axios
