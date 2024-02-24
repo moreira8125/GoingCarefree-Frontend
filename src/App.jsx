@@ -12,8 +12,10 @@ import { Routes, Route } from "react-router-dom";
 function App() {
   return (
     <>
-      <Navbar />
-      <div className="container mx-auto w-2/3 text-center">
+    
+      <Navbar  />
+   
+      <div >
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/destinations" element={<Destinations />} />
