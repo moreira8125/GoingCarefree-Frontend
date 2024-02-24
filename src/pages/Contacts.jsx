@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import greenTick from '../../public/images/greenTick.png'
 
-import "../styles/contacts.css"
+// import "../styles/contacts.css"
 
 function Contacts() {
 
@@ -39,7 +39,7 @@ function Contacts() {
     <>
       <div className='contactContainer'>
         <h1>Contact Us👇</h1>
-        <form onSubmit={handleSubmit}>
+        <form  className='w-48 mx-auto' onSubmit={handleSubmit}>
           <label>Name:
             <input type="text" value={name} onChange={(e) => { setName(e.target.value) }} />
           </label>
