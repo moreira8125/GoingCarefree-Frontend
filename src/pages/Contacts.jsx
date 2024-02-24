@@ -36,14 +36,14 @@ function Contacts() {
   return (
     <>
       <div
-        className="h-screen bg-cover bg-center"
+        className="h-screen bg-cover bg-center flex justify-center items-center "
         style={{ backgroundImage: `url(${bgImage})` }}
       >
-        <div className="flex flex-col pt-16">
+        <div className="flex flex-col pb-36 text-center " >
           <h1 className="mb-8 font-bold leading-none tracking-tight text-white md:text-3xl lg:text-5xl text-center">
             Contact Us
           </h1>
-          <form className="flex flex-col w-48 mx-auto" onSubmit={handleSubmit}>
+          <form className="flex flex-col w-48 mx-auto justify-center items-center "  onSubmit={handleSubmit}>
             <label className="mb-2 text-md font-medium text-white ">
               Name:
               <input
@@ -86,6 +86,13 @@ function Contacts() {
             </button>
           </form>
         </div>
+        {submitted && (
+        <div className="bg-white flex flex-col justify-center  items-center absolute  mx-auto border rounded-lg  top-1/3 p-8">
+          <img className="w-20 mb-4 " src={greenTick} />
+          <h1 className="font-helvetiva font-bold  text-gray-900">Thank you!</h1>
+          <h2 className=" text-gray-900" >You message was sent succesfully</h2>
+        </div>
+      )}
       </div>
 
       <footer className="flex flex-col items-center fixed bottom-0 w-full bg-navbar_color text-white font-bold pb-8 pt-8">
@@ -95,13 +102,7 @@ function Contacts() {
         <p>10-11 Spain St, Porto W1T 1DN, Portugal</p>
       </footer>
 
-      {submitted && (
-        <div className="messageConfirmation">
-          <img src={greenTick} />
-          <h1>Thank you!</h1>
-          <h2>You message was sent succesfully</h2>
-        </div>
-      )}
+ 
     </>
   );
 }
