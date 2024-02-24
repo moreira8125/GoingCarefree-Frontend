@@ -59,7 +59,7 @@ function Destinations() {
   }
 
   return (
-    <div>
+    <div className="container mx-auto w-2/3 text-center">
       <h1 className="mb-8 mt-6 font-bold leading-none tracking-tight text-navbar_color md:text-3xl lg:text-5xl text-center">
         Destinations
       </h1>
@@ -97,7 +97,7 @@ function Destinations() {
               <option value=""></option>
               <option value="City">City</option>
               <option value="Nature">Nature</option>
-              <option value="Beach">Beach</option>
+              <option value="Beach and Sun">Beach and Sun</option>
               <option value="Wellness">Wellness</option>
               <option value="Health">Health</option>
             </select>
