@@ -68,11 +68,15 @@ function Reviews() {
       })
       .then((result) => {
         setReview(result.data);
+        setNewName("");
+        setNewCountry("");
+        setNewPackage("");
+        setNewRating("");
+        setNewComment("");
       })
       .catch((err) => {
         console.log(err);
       });
-    console.log(review);
   }
 
   return (
@@ -119,6 +123,7 @@ function Reviews() {
               onChange={(e) => {
                 setNewName(e.target.value);
               }}
+              value={newName}
               required
             />
           </label>
@@ -130,6 +135,7 @@ function Reviews() {
               onChange={(e) => {
                 setNewCountry(e.target.value);
               }}
+              value={newCountry}
               required
             >
               <option value=""></option>
@@ -153,6 +159,7 @@ function Reviews() {
               onChange={(e) => {
                 setNewPackage(e.target.value);
               }}
+              value={newPackage}
               required
             >
               <option value=""></option>
@@ -173,14 +180,15 @@ function Reviews() {
               onChange={(e) => {
                 setNewRating(e.target.value);
               }}
+              value={newRating}
               required
             >
               <option value=""></option>
-              <option value="../../public/images/star1.png">⭐</option>
-              <option value="../../public/images/star2.png">⭐⭐</option>
-              <option value="../../public/images/star3.png">⭐⭐⭐</option>
-              <option value="../../public/images/star4.png">⭐⭐⭐⭐</option>
-              <option value="../../public/images/star5.png">⭐⭐⭐⭐⭐</option>
+              <option value="/images/star1.png">⭐</option>
+              <option value="/images/star2.png">⭐⭐</option>
+              <option value="/images/star3.png">⭐⭐⭐</option>
+              <option value="/images/star4.png">⭐⭐⭐⭐</option>
+              <option value="/images/star5.png">⭐⭐⭐⭐⭐</option>
             </select>
           </label>
 
@@ -193,6 +201,7 @@ function Reviews() {
               onChange={(e) => {
                 setNewComment(e.target.value);
               }}
+              value={newComment}
             ></textarea>
           </label>
 
