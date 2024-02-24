@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto w-2/3 text-center">
+      <div >
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/destinations" element={<Destinations />} />
