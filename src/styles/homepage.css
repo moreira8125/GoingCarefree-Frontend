@@ -30,7 +30,6 @@ body, html {
     position: relative;
     width: 100vw; 
     margin: auto;
-    /* border-radius: 20px; */
 
     background-image: url('/images/nature3.png');
     background-position: center;

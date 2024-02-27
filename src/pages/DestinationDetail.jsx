@@ -54,7 +54,7 @@ function DestinationDetail() {
               <span className="font-bold">{destination.duration} days</span>
             </span>
             <span className="flex items-center gap-4 text-navbar_color">
-              <i className="fi fi-rs-hotel text-2xl mt-1"></i>
+              <i className="fi fi-rs-utensils text-2xl mt-1"></i>
               <span className="font-bold">{destination.pensionType}</span>
             </span>
           </div>
