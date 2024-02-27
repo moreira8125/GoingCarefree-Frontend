@@ -1,47 +1,45 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
+import axios from 'axios';
+import bgImage from "../../public/images/nature6.png";
+import {Link} from 'react-router-dom'
 
 function Reviews() {
-  const [review, setReview] = useState([]);
-  const [destinations, setDestinations] = useState([]);
-  const [countries, setCountries] = useState([]);
-  const [newName, setNewName] = useState("");
-  const [newCountry, setNewCountry] = useState("");
-  const [newPackage, setNewPackage] = useState("");
-  const [newComment, setNewComment] = useState("");
-  const [newRating, setNewRating] = useState(0);
+  const [reviews, setReviews] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  //useEffect to get the REVIEWS
+  const [countries, setCountries] = useState([]);
+  const [destinations, setDestinations] = useState([]);
+  const [newName, setNewName] = useState('');
+  const [newCountry, setNewCountry] = useState('');
+  const [newPackage, setNewPackage] = useState('');
+  const [newComment, setNewComment] = useState('');
+  const [newRating, setNewRating] = useState('');
+
+
+  const [showForm, setShowForm] = useState(false)
+  
+
+
   useEffect(() => {
-    axios
-      .get("http://localhost:5005/reviews")
+    axios.get('http://localhost:5005/reviews')
       .then((result) => {
-        setReview(result.data);
+        setReviews(result.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
 
-  //useEffect to get the COUNTRIES for the select
-  useEffect(() => {
-    axios
-      .get("https://ih-countries-api.herokuapp.com/countries/")
+    axios.get('https://ih-countries-api.herokuapp.com/countries/')
       .then((result) => {
-        const sortedCountries = result.data.sort((a, b) => {
-          return a.name.common.localeCompare(b.name.common);
-        });
+        const sortedCountries = result.data.sort((a, b) => a.name.common.localeCompare(b.name.common));
         setCountries(sortedCountries);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
 
-  //useEffect to get the PACKAGE names
-  useEffect(() => {
-    axios
-      .get("http://localhost:5005/cities")
+    axios.get('http://localhost:5005/cities')
       .then((result) => {
         setDestinations(result.data);
       })
@@ -50,9 +48,33 @@ function Reviews() {
       });
   }, []);
 
-  function handleSubmit(e) {
-    e.preventDefault();
 
+
+
+ const prevReview = () => {
+    setCurrentIndex((prevIndex) => {
+      const totalReviews = reviews.length;
+      return prevIndex - 1 < 0 ? totalReviews - 1 : prevIndex - 1;
+    });
+  };
+  
+const nextReview = () => {
+    setCurrentIndex((prevIndex) => {
+      const totalReviews = reviews.length;
+      return prevIndex + 1 >= totalReviews ? 1 : prevIndex + 1;
+    });
+  };
+
+  const displayedReviews = reviews.length > 0 ? reviews.slice(currentIndex, currentIndex + 3) : [];
+
+  if (displayedReviews.length < 3 && reviews.length > 0) {
+    displayedReviews.push(...reviews.slice(0, 3 - displayedReviews.length));
+  }
+
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const newReview = {
       name: newName,
       flag: newCountry,
@@ -61,65 +83,66 @@ function Reviews() {
       rate: newRating,
     };
 
-    axios
-      .post("http://localhost:5005/reviews", newReview)
-      .then(() => {
-        return axios.get("http://localhost:5005/reviews");
-      })
+    axios.post('http://localhost:5005/reviews', newReview)
+      .then(() => axios.get('http://localhost:5005/reviews'))
       .then((result) => {
-        setReview(result.data);
-        setNewName("");
-        setNewCountry("");
-        setNewPackage("");
-        setNewRating("");
-        setNewComment("");
+        setReviews(result.data);
+        setNewName('');
+        setNewCountry('');
+        setNewPackage('');
+        setNewRating('');
+        setNewComment('');
       })
       .catch((err) => {
         console.log(err);
       });
-  }
+  };
+
 
   return (
-    <div>
-      <div className="flex flex-wrap w-full justify-around">
-        {review.map((oneReview) => {
-          return (
-            <div
-              key={oneReview.id}
-              className="flex flex-col mr-5 mb-8 mt-10 w-1/4 border-2 rounded-lg p-4 border-navbar_color"
-            >
-              <div className="flex justify-start mb-4">
-                <img src={oneReview.flag} alt="" className="w-8 mr-2" />
-                <h2 className="inline text-lg font-extrabold text-navbar_color">
-                  {oneReview.name}
-                </h2>
-              </div>
-              <div className="flex justify-start mb-2 items-center">
-                <h3 className="mr-4 text-md font-semibold text-navbar_color">
-                  {oneReview.package}
-                </h3>
-                <img src={oneReview.rate} className="w-32 h-auto"></img>
-              </div>
+    <div className="flex flex-col justify-center items-center w-full   bg-cover bg-center"
+    style={{ backgroundImage: `url(${bgImage})` }}
+    >
+   {   <h2 className="text-4xl text-navbar_color font-extrabold text-center mt-10 mb-10">
+         Our clients' feedback
+        </h2>}
+      <div className="flex justify-center ">
+        <button onClick={nextReview}><BsChevronCompactLeft size={30} color='black'/></button>
+        {displayedReviews.map((oneReview) => (
+          <div key={oneReview.id} className=" review-card p-4 border-2 rounded-lg mx-2 w-[500px] min-h-[360px]   bg-white">
 
-              <p className="text-left text-sm">{oneReview.comment}</p>
+            <div className="flex mb-0 "  >
+              <img src={oneReview.flag}  className="w-8 mb-4 mr-4" />
+              <h2 className="text-lg font-extrabold mb-2">{oneReview.name}</h2>
             </div>
-          );
-        })}
+            <div className="flex flex-col justify-start mb-2" >
+              <h3 className="text-md font-semibold mb-2">{oneReview.package}</h3>
+
+              <img src={oneReview.rate} className='w-32 h-auto' />
+            </div>
+            <p className="text-sm">{oneReview.comment}</p>
+          </div>
+
+        ))}
+        <button onClick={prevReview}><BsChevronCompactRight size={30} color='black'/></button>
       </div>
+
       <div>
-        <h2 className="text-4xl font-extrabold text-center mt-10 mb-10 text-navbar_color">
+     
+        <h2  className="  text-navbar_color text-4xl font-extrabold text-center mt-10 mb-10">
           Tell us about your vacation
         </h2>
+     
 
         <form
           className="w-48 mx-auto text-center flex flex-col items-center mb-12"
           onSubmit={handleSubmit}
         >
-          <label className="mb-2 text-md font-medium text-gray-600 ">
+          <label className="mb-2 text-md font-medium text-gray-900 ">
             Name
             <input
               type="text"
-              className="border text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-center dark:text-white mb-4"
+              className="border text-white text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-center dark:text-white mb-4"
               onChange={(e) => {
                 setNewName(e.target.value);
               }}
@@ -128,10 +151,10 @@ function Reviews() {
             />
           </label>
 
-          <label className="mb-2 text-md font-medium text-gray-600 ">
+          <label className="mb-2 text-md font-medium text-gray-900 ">
             Country
             <select
-              className="border text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-center dark:text-white mb-4"
+              className="border text-white text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-center dark:text-white mb-4"
               onChange={(e) => {
                 setNewCountry(e.target.value);
               }}
@@ -155,7 +178,7 @@ function Reviews() {
           <label>
             Package
             <select
-              className="border text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-center dark:text-white mb-4"
+              className="border text-white text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-center dark:text-white mb-4"
               onChange={(e) => {
                 setNewPackage(e.target.value);
               }}
@@ -192,12 +215,12 @@ function Reviews() {
             </select>
           </label>
 
-          <label className="mb-2 text-md font-medium text-gray-600 ">
+          <label className="mb-2 text-md font-medium text-gray-900 ">
             Comment
             <textarea
               cols="50"
               rows="10"
-              className="border text-gray-900 text-sm rounded-lg block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 dark:text-white mb-4"
+              className="border text-white text-sm rounded-lg block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 dark:text-white mb-4"
               onChange={(e) => {
                 setNewComment(e.target.value);
               }}
@@ -215,3 +238,4 @@ function Reviews() {
 }
 
 export default Reviews;
+

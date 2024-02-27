@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../public/images/logoGoingCarefree.png";
+import logo from "/images/logoGoingCarefree.png";
 import "../styles/navbar.css";
 import { Link, NavLink } from "react-router-dom";
 
