@@ -135,13 +135,21 @@ function Destinations() {
       )}
 
       {!fetching && destinations.length === 0 && (
-        <h2>Sorry! We have no destinations matching your criteria.</h2>
+        <h2 className="mb-4 mt-20 text-xl font-bold">
+          Sorry! We have no destinations matching your criteria.
+        </h2>
       )}
-      {fetching && destinations.length === 0 && <h2>Loading...</h2>}
+      {fetching && destinations.length === 0 && (
+        <h2 className="mb-4 text-xl font-bold">Loading...</h2>
+      )}
 
       {destinations.map((oneDestination) => {
         return (
-          <Link key={oneDestination.id} className="link">
+          <Link
+            key={oneDestination.id}
+            className="link"
+            to={`/destinations/${oneDestination.id}`}
+          >
             <div id="package">
               <img src={oneDestination.image} alt="cityImage" />
               <div className="packageInfo">
