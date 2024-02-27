@@ -20,8 +20,14 @@ function DestinationDetail() {
 
   return (
     <div>
+      <div className="mt-4 ml-5">
+        <Link to="/destinations">
+          <i className="fi fi-rs-arrow-circle-left text-5xl text-navbar_color"></i>
+        </Link>
+      </div>
+
       {destination ? (
-        <div className="flex flex-col items-center justify-center mt-12">
+        <div className="flex flex-col items-center justify-center">
           <h1 className="text-4xl font-extrabold text-navbar_color">
             {destination.name}
           </h1>
@@ -52,7 +58,7 @@ function DestinationDetail() {
               <span className="font-bold">{destination.pensionType}</span>
             </span>
           </div>
-          <button className="mt-16 border  font-extrabold bg-navbar_color text-white px-8 py-4 rounded-lg hover:bg-white hover:text-navbar_color hover:border-navbar_color">
+          <button className="mt-16 border-2  font-extrabold bg-navbar_color text-white px-8 py-4 rounded-lg hover:bg-white hover:text-navbar_color hover:border-navbar_color hover:border-2">
             RESERVE NOW
           </button>
         </div>
