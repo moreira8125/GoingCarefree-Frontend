@@ -1,11 +1,16 @@
-import Navbar from "./components/Navbar";
-import Homepage from "./pages/Homepage";
-import Destinations from "./pages/Destinations";
-import DestinationDetail from "./pages/DestinationDetail";
-import Reviews from "./pages/Reviews";
-import Admin from "./pages/Admin";
-import Contacts from "./pages/Contacts";
-import { Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/Navbar"
+import Homepage from "./pages/Homepage"
+import Destinations from "./pages/Destinations"
+import DestinationDetail from "./pages/DestinationDetail"
+import Reviews from "./pages/Reviews"
+import Admin from "./pages/Admin"
+import Contacts from "./pages/Contacts"
+import {Routes, Route} from 'react-router-dom'
+
+
+
+
 
 // import './App.css'
 
