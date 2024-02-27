@@ -1,11 +1,5 @@
-import React from 'react'
-
 function DestinationDetail() {
-  return (
-    <div>
-      
-    </div>
-  )
+  return <div></div>;
 }
 
-export default DestinationDetail
+export default DestinationDetail;

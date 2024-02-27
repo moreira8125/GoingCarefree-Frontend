@@ -1,3 +1,4 @@
+
 import Navbar from "./components/Navbar"
 import Homepage from "./pages/Homepage"
 import Destinations from "./pages/Destinations"
@@ -11,24 +12,31 @@ import {Routes, Route} from 'react-router-dom'
 
 
 
-function App() {
+// import './App.css'
 
+function App() {
   return (
     <>
+
     
-    <Navbar/>
-    <Routes>
-    <Route path="/" element={<Homepage/>}/>
-    <Route path="/destinations" element={<Destinations/>}/>
-    <Route path="/destinations/:id" element={<DestinationDetail/>}/>
-    <Route path="/reviews" element={<Reviews/>}/>
-    <Route path="/admin" element={<Admin/>}/>
-    <Route path="/contacts" element={<Contacts/>}/>
-  
-    </Routes>
-     
+      <Navbar  />
+   
+      <div >
+
+
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/destinations" element={<Destinations />} />
+          <Route path="/destinations/:id" element={<DestinationDetail />} />
+
+          <Route path="/reviews" element={<Reviews />} />
+          <Route path="/admin" element={<Admin />} />
+
+          <Route path="/contacts" element={<Contacts />} />
+        </Routes>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
