@@ -59,7 +59,7 @@ function DestinationDetail() {
             </span>
           </div>
           <button className="mt-16 border-2  font-extrabold bg-navbar_color text-white px-8 py-4 rounded-lg hover:bg-white hover:text-navbar_color hover:border-navbar_color hover:border-2">
-            RESERVE NOW
+            BOOK NOW
           </button>
         </div>
       ) : (

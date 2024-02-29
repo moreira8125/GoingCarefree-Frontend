@@ -144,7 +144,7 @@ function Reviews() {
           className="w-48 mx-auto text-center flex flex-col items-center mb-12"
           onSubmit={handleSubmit}
         >
-          <label className="mb-2 text-md font-medium text-gray-900 ">
+          <label  className="mb-2 text-md font-medium text-gray-900 ">
             Name
             <input
               type="text"

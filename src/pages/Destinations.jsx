@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/Destinations.css";
 import { Link } from "react-router-dom";
+import bgImage from '../../public/images/destinations1.png'
 
 function Destinations() {
   const [destinations, setDestinations] = useState([]);
@@ -59,7 +60,8 @@ function Destinations() {
   }
 
   return (
-    <div className="">
+    <div 
+    >
     <div className="container mx-auto w-2/3 text-center ">
       <h1 className="mb-8 mt-6 font-bold leading-none tracking-tight text-navbar_color md:text-3xl lg:text-5xl text-center">
         Destinations
