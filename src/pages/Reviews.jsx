@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
+import axios from "axios";
 import bgImage from "../../public/images/nature6.png";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 function Reviews() {
   const [reviews, setReviews] = useState([]);
@@ -10,19 +10,17 @@ function Reviews() {
 
   const [countries, setCountries] = useState([]);
   const [destinations, setDestinations] = useState([]);
-  const [newName, setNewName] = useState('');
-  const [newCountry, setNewCountry] = useState('');
-  const [newPackage, setNewPackage] = useState('');
-  const [newComment, setNewComment] = useState('');
-  const [newRating, setNewRating] = useState('');
+  const [newName, setNewName] = useState("");
+  const [newCountry, setNewCountry] = useState("");
+  const [newPackage, setNewPackage] = useState("");
+  const [newComment, setNewComment] = useState("");
+  const [newRating, setNewRating] = useState("");
 
-
-  const [showForm, setShowForm] = useState(false)
-  
-
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
-    axios.get('http://localhost:5005/reviews')
+    axios
+      .get("http://localhost:5005/reviews")
       .then((result) => {
         setReviews(result.data);
       })
@@ -30,16 +28,20 @@ function Reviews() {
         console.log(err);
       });
 
-    axios.get('https://ih-countries-api.herokuapp.com/countries/')
+    axios
+      .get("https://ih-countries-api.herokuapp.com/countries/")
       .then((result) => {
-        const sortedCountries = result.data.sort((a, b) => a.name.common.localeCompare(b.name.common));
+        const sortedCountries = result.data.sort((a, b) =>
+          a.name.common.localeCompare(b.name.common)
+        );
         setCountries(sortedCountries);
       })
       .catch((err) => {
         console.log(err);
       });
 
-    axios.get('http://localhost:5005/cities')
+    axios
+      .get("http://localhost:5005/cities")
       .then((result) => {
         setDestinations(result.data);
       })
@@ -48,30 +50,26 @@ function Reviews() {
       });
   }, []);
 
-
-
-
- const prevReview = () => {
+  const prevReview = () => {
     setCurrentIndex((prevIndex) => {
       const totalReviews = reviews.length;
       return prevIndex - 1 < 0 ? totalReviews - 1 : prevIndex - 1;
     });
   };
-  
-const nextReview = () => {
+
+  const nextReview = () => {
     setCurrentIndex((prevIndex) => {
       const totalReviews = reviews.length;
       return prevIndex + 1 >= totalReviews ? 1 : prevIndex + 1;
     });
   };
 
-  const displayedReviews = reviews.length > 0 ? reviews.slice(currentIndex, currentIndex + 3) : [];
+  const displayedReviews =
+    reviews.length > 0 ? reviews.slice(currentIndex, currentIndex + 3) : [];
 
   if (displayedReviews.length < 3 && reviews.length > 0) {
     displayedReviews.push(...reviews.slice(0, 3 - displayedReviews.length));
   }
-
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -83,56 +81,64 @@ const nextReview = () => {
       rate: newRating,
     };
 
-    axios.post('http://localhost:5005/reviews', newReview)
-      .then(() => axios.get('http://localhost:5005/reviews'))
+    axios
+      .post("http://localhost:5005/reviews", newReview)
+      .then(() => axios.get("http://localhost:5005/reviews"))
       .then((result) => {
         setReviews(result.data);
-        setNewName('');
-        setNewCountry('');
-        setNewPackage('');
-        setNewRating('');
-        setNewComment('');
+        setNewName("");
+        setNewCountry("");
+        setNewPackage("");
+        setNewRating("");
+        setNewComment("");
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-
   return (
-    <div className="flex flex-col justify-center items-center w-full   bg-cover bg-center"
-    style={{ backgroundImage: `url(${bgImage})` }}
+    <div
+      className="flex flex-col justify-center items-center w-full   bg-cover bg-center"
+      style={{ backgroundImage: `url(${bgImage})` }}
     >
-   {   <h2 className="text-4xl text-navbar_color font-extrabold text-center mt-10 mb-10">
-         Our clients' feedback
-        </h2>}
+      {
+        <h2 className="text-4xl text-navbar_color font-extrabold text-center mt-10 mb-10">
+          Our clients' feedback
+        </h2>
+      }
       <div className="flex justify-center ">
-        <button onClick={nextReview}><BsChevronCompactLeft size={30} color='black'/></button>
+        <button onClick={nextReview}>
+          <BsChevronCompactLeft size={30} color="black" />
+        </button>
         {displayedReviews.map((oneReview) => (
-          <div key={oneReview.id} className=" review-card p-4 border-2 rounded-lg mx-2 w-[500px] min-h-[360px]   bg-white">
-
-            <div className="flex mb-0 "  >
-              <img src={oneReview.flag}  className="w-8 mb-4 mr-4" />
+          <div
+            key={oneReview.id}
+            className=" review-card p-4 border-2 rounded-lg mx-2 w-[500px] min-h-[360px]   bg-white"
+          >
+            <div className="flex mb-0 ">
+              <img src={oneReview.flag} className="w-8 mb-4 mr-4" />
               <h2 className="text-lg font-extrabold mb-2">{oneReview.name}</h2>
             </div>
-            <div className="flex flex-col justify-start mb-2" >
-              <h3 className="text-md font-semibold mb-2">{oneReview.package}</h3>
+            <div className="flex flex-col justify-start mb-2">
+              <h3 className="text-md font-semibold mb-2">
+                {oneReview.package}
+              </h3>
 
-              <img src={oneReview.rate} className='w-32 h-auto' />
+              <img src={oneReview.rate} className="w-32 h-auto" />
             </div>
             <p className="text-sm">{oneReview.comment}</p>
           </div>
-
         ))}
-        <button onClick={prevReview}><BsChevronCompactRight size={30} color='black'/></button>
+        <button onClick={prevReview}>
+          <BsChevronCompactRight size={30} color="black" />
+        </button>
       </div>
 
       <div>
-     
-        <h2  className="  text-navbar_color text-4xl font-extrabold text-center mt-10 mb-10">
+        <h2 className="  text-navbar_color text-4xl font-extrabold text-center mt-10 mb-10">
           Tell us about your vacation
         </h2>
-     
 
         <form
           className="w-48 mx-auto text-center flex flex-col items-center mb-12"
@@ -238,4 +244,3 @@ const nextReview = () => {
 }
 
 export default Reviews;
-
