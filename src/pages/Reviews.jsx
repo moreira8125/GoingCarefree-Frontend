@@ -20,7 +20,7 @@ function Reviews() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5005/reviews")
+      .get(`${import.meta.env.VITE_API_URL}/reviews`)
       .then((result) => {
         setReviews(result.data);
       })
@@ -41,7 +41,7 @@ function Reviews() {
       });
 
     axios
-      .get("http://localhost:5005/cities")
+      .get(`${import.meta.env.VITE_API_URL}/cities`)
       .then((result) => {
         setDestinations(result.data);
       })
@@ -82,8 +82,8 @@ function Reviews() {
     };
 
     axios
-      .post("http://localhost:5005/reviews", newReview)
-      .then(() => axios.get("http://localhost:5005/reviews"))
+      .post(`${import.meta.env.VITE_API_URL}/reviews`, newReview)
+      .then(() => axios.get(`${import.meta.env.VITE_API_URL}/reviews`))
       .then((result) => {
         setReviews(result.data);
         setNewName("");
@@ -144,7 +144,7 @@ function Reviews() {
           className="w-48 mx-auto text-center flex flex-col items-center mb-12"
           onSubmit={handleSubmit}
         >
-          <label  className="mb-2 text-md font-medium text-gray-900 ">
+          <label className="mb-2 text-md font-medium text-gray-900 ">
             Name
             <input
               type="text"

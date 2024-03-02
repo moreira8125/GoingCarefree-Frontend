@@ -10,7 +10,7 @@ function DestinationDetail() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5005/cities/${id}`)
+      .get(`${import.meta.env.VITE_API_URL}/cities/${id}`)
       .then((result) => {
         setDestination(result.data);
         console.log(result.data);

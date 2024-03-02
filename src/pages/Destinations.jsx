@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/Destinations.css";
 import { Link } from "react-router-dom";
-import bgImage from '../../public/images/destinations1.png'
+import bgImage from "../../public/images/destinations1.png";
 
 function Destinations() {
   const [destinations, setDestinations] = useState([]);
@@ -14,7 +14,7 @@ function Destinations() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5005/cities")
+      .get(`${import.meta.env.VITE_API_URL}/cities`)
       .then((result) => {
         setDestinations(result.data);
         setFetching(false);
@@ -41,7 +41,7 @@ function Destinations() {
     }
 
     axios
-      .get(`http://localhost:5005/cities?&${params.toString()}`)
+      .get(`${import.meta.env.VITE_API_URL}/cities?&${params.toString()}`)
       .then((result) => {
         setDestinations(result.data);
       })
@@ -60,112 +60,120 @@ function Destinations() {
   }
 
   return (
-    <div 
-    >
-    <div className="container mx-auto w-2/3 text-center ">
-      <h1 className="mb-8 mt-6 font-bold leading-none tracking-tight text-navbar_color md:text-3xl lg:text-5xl text-center">
-        Destinations
-      </h1>
-      <Link>
-        <h3
-          className="mb-4 font-bold leading-none tracking-tight text-navbar_color md:text-xl lg:text-2xl hover:underline text-center"
-          onClick={handleTitleClick}
-        >
-          Click Here For Your Perfect Vacation
-        </h3>
-      </Link>
-
-      {showForm && (
-        <form className="destinationsForm w-48 mx-auto" onSubmit={handleSubmit}>
-          <label htmlFor="" className="mb-2 text-md font-medium text-gray-600 ">
-            Budget
-            <input
-              type="number"
-              onChange={(e) => {
-                setBudget(e.target.value);
-              }}
-              value={budget}
-              className="border  text-gray-900 text-sm rounded-lg ring-blue-500  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 dark:text-white text-center"
-            />
-          </label>
-          <label htmlFor="" className="mb-2 text-md font-medium text-gray-600 ">
-            Type
-            <select
-              onChange={(e) => {
-                setType(e.target.value);
-              }}
-              value={type}
-              className="border  text-gray-900 text-sm rounded-lg ring-blue-500  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 dark:text-white text-center"
-            >
-              <option value=""></option>
-              <option value="City">City</option>
-              <option value="Nature">Nature</option>
-              <option value="Beach and Sun">Beach and Sun</option>
-              <option value="Wellness">Wellness</option>
-              <option value="Health">Health</option>
-            </select>
-          </label>
-          <label
-            htmlFor=""
-            className="className=mb-2 text-md font-medium text-gray-600 "
+    <div>
+      <div className="container mx-auto w-2/3 text-center ">
+        <h1 className="mb-8 mt-6 font-bold leading-none tracking-tight text-navbar_color md:text-3xl lg:text-5xl text-center">
+          Destinations
+        </h1>
+        <Link>
+          <h3
+            className="mb-4 font-bold leading-none tracking-tight text-navbar_color md:text-xl lg:text-2xl hover:underline text-center"
+            onClick={handleTitleClick}
           >
-            Country
-            <select
-              onChange={(e) => {
-                setCountry(e.target.value);
-              }}
-              value={country}
-              className="border  text-gray-900 text-sm rounded-lg ring-blue-500  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 dark:text-white text-center"
-            >
-              <option value=""></option>
-              <option value="England">England</option>
-              <option value="France">France</option>
-              <option value="Portugal">Portugal</option>
-              <option value="Netherlands">Netherlands</option>
-              <option value="Spain">Spain</option>
-              <option value="Iceland">Iceland</option>
-              <option value="USA">USA</option>
-              <option value="Australia">Australia</option>
-              <option value="Kenya">Kenya</option>
-              <option value="Turkey">Turkey</option>
-            </select>
-          </label>
+            Click Here For Your Perfect Vacation
+          </h3>
+        </Link>
 
-          <button className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-navbar_color hover:bg-blue-400 mt-5">
-            Search
-          </button>
-        </form>
-      )}
-
-      {!fetching && destinations.length === 0 && (
-        <h2 className="mb-4 mt-20 text-xl font-bold">
-          Sorry! We have no destinations matching your criteria.
-        </h2>
-      )}
-      {fetching && destinations.length === 0 && (
-        <h2 className="mb-4 text-xl font-bold">Loading...</h2>
-      )}
-
-      {destinations.map((oneDestination) => {
-        return (
-          <Link
-            key={oneDestination.id}
-            className="link"
-            to={`/destinations/${oneDestination.id}`}
+        {showForm && (
+          <form
+            className="destinationsForm w-48 mx-auto"
+            onSubmit={handleSubmit}
           >
-            <div id="package">
-              <img src={oneDestination.image} alt="cityImage" />
-              <div className="packageInfo">
-                <h2 className="mb-4 text-xl font-bold">
-                  {oneDestination.name}
-                </h2>
-                <p>{oneDestination.hook}</p>
+            <label
+              htmlFor=""
+              className="mb-2 text-md font-medium text-gray-600 "
+            >
+              Budget
+              <input
+                type="number"
+                onChange={(e) => {
+                  setBudget(e.target.value);
+                }}
+                value={budget}
+                className="border  text-gray-900 text-sm rounded-lg ring-blue-500  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 dark:text-white text-center"
+              />
+            </label>
+            <label
+              htmlFor=""
+              className="mb-2 text-md font-medium text-gray-600 "
+            >
+              Type
+              <select
+                onChange={(e) => {
+                  setType(e.target.value);
+                }}
+                value={type}
+                className="border  text-gray-900 text-sm rounded-lg ring-blue-500  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 dark:text-white text-center"
+              >
+                <option value=""></option>
+                <option value="City">City</option>
+                <option value="Nature">Nature</option>
+                <option value="Beach and Sun">Beach and Sun</option>
+                <option value="Wellness">Wellness</option>
+                <option value="Health">Health</option>
+              </select>
+            </label>
+            <label
+              htmlFor=""
+              className="className=mb-2 text-md font-medium text-gray-600 "
+            >
+              Country
+              <select
+                onChange={(e) => {
+                  setCountry(e.target.value);
+                }}
+                value={country}
+                className="border  text-gray-900 text-sm rounded-lg ring-blue-500  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 dark:text-white text-center"
+              >
+                <option value=""></option>
+                <option value="England">England</option>
+                <option value="France">France</option>
+                <option value="Portugal">Portugal</option>
+                <option value="Netherlands">Netherlands</option>
+                <option value="Spain">Spain</option>
+                <option value="Iceland">Iceland</option>
+                <option value="USA">USA</option>
+                <option value="Australia">Australia</option>
+                <option value="Kenya">Kenya</option>
+                <option value="Turkey">Turkey</option>
+              </select>
+            </label>
+
+            <button className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-navbar_color hover:bg-blue-400 mt-5">
+              Search
+            </button>
+          </form>
+        )}
+
+        {!fetching && destinations.length === 0 && (
+          <h2 className="mb-4 mt-20 text-xl font-bold">
+            Sorry! We have no destinations matching your criteria.
+          </h2>
+        )}
+        {fetching && destinations.length === 0 && (
+          <h2 className="mb-4 text-xl font-bold">Loading...</h2>
+        )}
+
+        {destinations.map((oneDestination) => {
+          return (
+            <Link
+              key={oneDestination.id}
+              className="link"
+              to={`/destinations/${oneDestination.id}`}
+            >
+              <div id="package">
+                <img src={oneDestination.image} alt="cityImage" />
+                <div className="packageInfo">
+                  <h2 className="mb-4 text-xl font-bold">
+                    {oneDestination.name}
+                  </h2>
+                  <p>{oneDestination.hook}</p>
+                </div>
               </div>
-            </div>
-          </Link>
-        );
-      })}
-    </div>
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 }

@@ -17,7 +17,7 @@ function AdminEdit() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5005/reviews/${reviewId}`)
+      .get(`${import.meta.env.VITE_API_URL}/reviews/${reviewId}`)
       .then((result) => {
         console.log(result.data);
         setName(result.data.name);
@@ -43,7 +43,7 @@ function AdminEdit() {
       });
 
     axios
-      .get("http://localhost:5005/cities")
+      .get(`${import.meta.env.VITE_API_URL}/cities`)
       .then((result) => {
         setDestinations(result.data);
       })
@@ -63,7 +63,7 @@ function AdminEdit() {
     };
 
     axios
-      .put(`http://localhost:5005/reviews/${reviewId}`, editedReview)
+      .put(`${import.meta.env.VITE_API_URL}/reviews/${reviewId}`, editedReview)
       .then(() => {
         navigate("/admin");
       });

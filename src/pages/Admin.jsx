@@ -15,7 +15,7 @@ function Admin() {
 
   const deleteReview = (reviewID) => {
     axios
-      .delete(`http://localhost:5005/reviews/${reviewID}`)
+      .delete(`${import.meta.env.VITE_API_URL}/reviews/${reviewID}`)
       .then(() => {
         getReviews();
         setShowPopup(false);
@@ -27,7 +27,7 @@ function Admin() {
 
   function getReviews() {
     axios
-      .get("http://localhost:5005/reviews")
+      .get(`${import.meta.env.VITE_API_URL}/reviews`)
       .then((result) => {
         setReview(result.data);
       })
