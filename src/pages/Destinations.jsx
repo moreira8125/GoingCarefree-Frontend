@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "../styles/Destinations.css";
 import { Link } from "react-router-dom";
 import bgImage from "../../public/images/destinations1.png";
 
@@ -62,12 +61,12 @@ function Destinations() {
   return (
     <div>
       <div className="container mx-auto w-2/3 text-center ">
-        <h1 className="mb-8 mt-6 font-bold leading-none tracking-tight text-navbar_color md:text-3xl lg:text-5xl text-center">
+        <h1 className="mb-8 mt-6 font-bold leading-none tracking-tight text-navbar_color text-2xl md:text-3xl lg:text-5xl text-center">
           Destinations
         </h1>
         <Link>
           <h3
-            className="mb-4 font-bold leading-none tracking-tight text-navbar_color md:text-xl lg:text-2xl hover:underline text-center"
+            className="mb-4 font-bold leading-none tracking-tight text-navbar_color text-lg md:text-xl lg:text-2xl hover:underline text-center"
             onClick={handleTitleClick}
           >
             Click Here For Your Perfect Vacation
@@ -76,7 +75,7 @@ function Destinations() {
 
         {showForm && (
           <form
-            className="destinationsForm w-48 mx-auto"
+            className="destinationsForm lg:w-48  w-36 mx-auto"
             onSubmit={handleSubmit}
           >
             <label
@@ -139,7 +138,7 @@ function Destinations() {
               </select>
             </label>
 
-            <button className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-navbar_color hover:bg-blue-400 mt-5">
+            <button className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-2/3  px-5 py-2.5 text-center bg-navbar_color hover:bg-blue-400 mt-5">
               Search
             </button>
           </form>
@@ -151,7 +150,9 @@ function Destinations() {
           </h2>
         )}
         {fetching && destinations.length === 0 && (
-          <h2 className="mb-4 text-xl font-bold">Loading...</h2>
+          <h2 className="mb-4 text-xl text-navbar_color font-bold">
+            Loading...
+          </h2>
         )}
 
         {destinations.map((oneDestination) => {
@@ -161,13 +162,17 @@ function Destinations() {
               className="link"
               to={`/destinations/${oneDestination.id}`}
             >
-              <div id="package">
-                <img src={oneDestination.image} alt="cityImage" />
-                <div className="packageInfo">
-                  <h2 className="mb-4 text-xl font-bold">
+              <div className="group flex flex-col mx-auto my-20 items-center justify-center gap-2 border-2 border-navbar_color pt-4 px-4 rounded-customRadius bg-white hover:bg-navbar_color md:justify-evenly md:gap-4 md:flex-row md:p-8">
+                <img
+                  src={oneDestination.image}
+                  alt="cityImage"
+                  className="border group-hover:border-navbar_color rounded-customRadius w-32 md:w-80 lg:w-96 xl:w-w_custom"
+                />
+                <div className="packageInfo group-hover:text-white text-navbar_color">
+                  <h2 className="mb-4 text-md font-bold">
                     {oneDestination.name}
                   </h2>
-                  <p>{oneDestination.hook}</p>
+                  <p className="hidden md:block">{oneDestination.hook}</p>
                 </div>
               </div>
             </Link>
