@@ -26,7 +26,8 @@ function Homepage() {
     >
       <ReactPlayer
         key={videoKey} // La clave que cambia para reiniciar el video
-        url="https://youtu.be/7p-kAu7_los"
+        url="https://youtu.be/wODTytAwuRs"
+        //  url="https://youtu.be/PdIGpR5KXWs"
         width="100%"
         height="100%"
         controls
