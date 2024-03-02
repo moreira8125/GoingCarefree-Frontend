@@ -8,6 +8,7 @@ function Reviews() {
   const [reviews, setReviews] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+
   const [countries, setCountries] = useState([]);
   const [destinations, setDestinations] = useState([]);
   const [newName, setNewName] = useState("");
@@ -17,6 +18,7 @@ function Reviews() {
   const [newRating, setNewRating] = useState("");
 
   const [showForm, setShowForm] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     axios
@@ -50,6 +52,19 @@ function Reviews() {
       });
   }, []);
 
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
+
   const prevReview = () => {
     setCurrentIndex((prevIndex) => {
       const totalReviews = reviews.length;
@@ -63,14 +78,20 @@ function Reviews() {
       return prevIndex + 1 >= totalReviews ? 1 : prevIndex + 1;
     });
   };
-
-  const displayedReviews =
-    reviews.length > 0 ? reviews.slice(currentIndex, currentIndex + 3) : [];
-
-  if (displayedReviews.length < 3 && reviews.length > 0) {
-    displayedReviews.push(...reviews.slice(0, 3 - displayedReviews.length));
+  const getReviewsToShow = () => {
+    if (windowWidth >= 1700) { 
+      return 3; 
+    } else if (windowWidth >= 1200) { 
+      return 2; 
+    } else  {
+      return 1; 
+    }
+  };
+  const reviewsToShow = getReviewsToShow();
+  const displayedReviews = reviews.length > 0 ? reviews.slice(currentIndex, currentIndex + reviewsToShow) : [];
+  if (displayedReviews.length < reviewsToShow && reviews.length > 0) {
+    displayedReviews.push(...reviews.slice(0, reviewsToShow - displayedReviews.length));
   }
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const newReview = {
