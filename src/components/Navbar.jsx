@@ -12,7 +12,7 @@ function Navbar() {
 
   return (
     <div
-      className=" bg-navbar_color flex w-full sticky top-0 justify-between flex-wrap h-[50px] md:h[70px] lg:h-[80px] xl:h-[90px]"
+      className=" bg-navbar_color flex w-full sticky top-0 justify-between flex-wrap pt-4"
       style={{ zIndex: "1000" }}
     >
       <Link to={"/"} className="flex justify-center items-center">
@@ -56,7 +56,7 @@ function Navbar() {
         </button>
       </div>
       {isOpen && (
-        <div className="flex flex-col items-center mb-4 basis-full bg-navbar_color">
+        <div className="flex flex-col items-center basis-full pt-4 bg-navbar_color">
           <NavLink
             className="text-navlink_color font-bold text-2xl mb-4 hover:text-white"
             to={"/"}
