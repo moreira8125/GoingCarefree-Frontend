@@ -108,7 +108,7 @@ function Contacts() {
         )}
       </div>
 
-      <footer className="flex flex-col items-center fixed bottom-0 w-full bg-navbar_color text-white pb-4 pt-4 md:pb-8 md:pt-8 md:font-bold ">
+      <footer className="flex flex-col items-center fixed bottom-0 w-full bg-navbar_color text-white pb-4 pt-4">
         <h2>Reach us</h2>
         <p>+51 222 034 897</p>
         <p>info@goingcarefree.com</p>
