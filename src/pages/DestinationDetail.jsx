@@ -57,7 +57,11 @@ function DestinationDetail() {
               {destination.city}, {destination.country}
             </h2>
             <div className="flex items-center justify-center gap-6 mt-16">
-              <img src={destination.image} alt="city image" />
+              <img
+                src={destination.image}
+                alt="city image"
+                className="w-48 md:w-80 lg:w-96 xl:w-w_custom"
+              />
               <p className="w-1/3 font-bold">{destination.description}</p>
             </div>
 

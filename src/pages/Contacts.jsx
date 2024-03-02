@@ -37,14 +37,18 @@ function Contacts() {
     <>
       <div
         className="h-full pt-16 bg-cover bg-center flex justify-center items-center "
-        style={{ backgroundImage: `url(${bgImage})`, height:'calc(100vh - 100px)' }}
+        style={{
+          backgroundImage: `url(${bgImage})`,
+          height: "calc(100vh - 100px)",
+        }}
       >
         <div className="flex flex-col pb-36 text-center  ">
-          <h1 className="mb-8 font-bold leading-none tracking-tight text-white 
+          <h1
+            className="mb-8 font-bold leading-none tracking-tight text-white 
           
-          md:text-3xl
-           lg:text-5xl 
-           text-center">
+          text-4xl
+           text-center"
+          >
             Contact Us
           </h1>
           <form
@@ -84,7 +88,7 @@ function Contacts() {
                 onChange={(e) => {
                   setMessage(e.target.value);
                 }}
-                className="border  text-gray-900 text-sm rounded-lg ring-blue-500 block p-2.5 bg-white border-gray-600 placeholder-gray-400 dark:text-navbar_color bg-opacity-50"
+                className="border  text-gray-900 text-sm rounded-lg ring-blue-500 block p-2.5 bg-white border-gray-600 placeholder-gray-400 dark:text-navbar_color bg-opacity-50 w-full md:w-fit"
               ></textarea>
             </label>
 
@@ -104,7 +108,7 @@ function Contacts() {
         )}
       </div>
 
-      <footer className="flex flex-col items-center fixed bottom-0 w-full bg-navbar_color text-white font-bold pb-8 pt-8">
+      <footer className="flex flex-col items-center fixed bottom-0 w-full bg-navbar_color text-white pb-4 pt-4 md:pb-8 md:pt-8 md:font-bold ">
         <h2>Reach us</h2>
         <p>+51 222 034 897</p>
         <p>info@goingcarefree.com</p>
