@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
-    <div className="navContainer" style={{zIndex:'1000'}}>
+    <div className="navContainer" style={{ zIndex: "1000" }}>
       <Link to={"/"}>
         <img src={logo} />
       </Link>
