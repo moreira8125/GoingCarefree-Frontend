@@ -39,8 +39,12 @@ function Contacts() {
         className="h-full pt-16 bg-cover bg-center flex justify-center items-center "
         style={{ backgroundImage: `url(${bgImage})`, height:'calc(100vh - 100px)' }}
       >
-        <div className="flex flex-col pb-36 text-center ">
-          <h1 className="mb-8 font-bold leading-none tracking-tight text-white md:text-3xl lg:text-5xl text-center">
+        <div className="flex flex-col pb-36 text-center  ">
+          <h1 className="mb-8 font-bold leading-none tracking-tight text-white 
+          
+          md:text-3xl
+           lg:text-5xl 
+           text-center">
             Contact Us
           </h1>
           <form

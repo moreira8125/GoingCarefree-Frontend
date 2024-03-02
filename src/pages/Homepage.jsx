@@ -22,7 +22,7 @@ function Homepage() {
         padding: '0',
         position: 'relative', // Asegura que el contenedor se posicione correctamente
       }}
-      className="bg-white bg-video_color"
+      className=" bg-video_color"
     >
       <ReactPlayer
         key={videoKey} // La clave que cambia para reiniciar el video
