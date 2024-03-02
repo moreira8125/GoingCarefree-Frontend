@@ -10,6 +10,7 @@ export default {
     },
       colors: {
         navbar_color: "#072439",
+        video_color: "#001628",
       },
     },
   },

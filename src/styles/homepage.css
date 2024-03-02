@@ -2,7 +2,6 @@
 body, html {
     margin: 0;
     padding: 0;
-    width: 100%;
   }
 
 .firstContainer {
@@ -10,9 +9,8 @@ body, html {
     background-position: center;
     background-size:cover;
     width: 100%;
-    height: 100%; 
     box-sizing: border-box;
-    min-height: 100%;
+
 }
 
 .welcome{
@@ -26,7 +24,23 @@ body, html {
 
 }
 
-.video-wrapper {
+.videoWrapper {
+  width: 100vw; /* 100% of the viewport width */
+  height: 100vh; /* 100% of the viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reactPlayer {
+  /* position: absolute;  */
+  /* top: 0; */
+  left: 0;
+  bottom: 0;
+  
+}
+
+/* .video-wrapper {
     position: relative;
     width: 100vw; 
     margin: auto;
@@ -38,7 +52,7 @@ body, html {
     height: 100%; 
     box-sizing: border-box;
     min-height: 100%; 
-  }
+  } */
 
   video{
     border-radius: 20px;

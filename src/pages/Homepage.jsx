@@ -1,39 +1,38 @@
-import React, { useState, useRef } from "react";
-import videoSrc from "/images/videoGoingCarefree.mp4";
-
-import play from "/images/play.png";
+import React, { useState } from "react";
+import ReactPlayer from 'react-player';
 
 function Homepage() {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [videoKey, setVideoKey] = useState(0); // Se utiliza para forzar el remontaje del componente ReactPlayer
 
-  const videoRef = useRef(null);
-
-  const handlePlayVideo = () => {
-    const video = videoRef.current;
-    if (isPlaying) {
-      video.pause();
-    } else {
-      video.play();
-    }
-    setIsPlaying(!isPlaying);
+  // Función que maneja el fin del video
+  const handleVideoEnd = () => {
+    setVideoKey(prevKey => prevKey + 1); // Incrementa la clave para forzar el remontaje
   };
 
   return (
-    <div>
-      <div className="video-wrapper">
-        <video className="w-full h-auto" id="myVideo" controls ref={videoRef}>
-          <source src={videoSrc} type="video/mp4" />
-        </video>
-        <div className="fixed inset-0 flex items-center justify-center">
-          <button
-            className="w-40"
-            onClick={handlePlayVideo}
-            style={{ display: isPlaying ? "none" : "block" }}
-          >
-            <img src={play} alt="" />
-          </button>
-        </div>
-      </div>
+    <div style={{
+        height: 'calc(100vh - 100px)', // Resta la altura de la Navbar
+        width: '100vw',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column', 
+        justifyContent: 'center',
+        alignItems: 'flex-end', // Alinea el contenido en la parte inferior
+        margin: '0',
+        padding: '0',
+        position: 'relative', // Asegura que el contenedor se posicione correctamente
+      }}
+      className="bg-white bg-video_color"
+    >
+      <ReactPlayer
+        key={videoKey} // La clave que cambia para reiniciar el video
+        url="https://youtu.be/7p-kAu7_los"
+        width="100%"
+        height="100%"
+        controls
+        style={{ objectFit: 'cover', position: 'absolute', bottom: '0' }} // Asegura que el video se alinee en la parte inferior
+        onEnded={handleVideoEnd} // Maneja el evento cuando el video termina
+      />
     </div>
   );
 }
