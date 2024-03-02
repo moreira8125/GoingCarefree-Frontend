@@ -166,7 +166,7 @@ function Destinations() {
                 <img
                   src={oneDestination.image}
                   alt="cityImage"
-                  className="border group-hover:border-navbar_color rounded-customRadius w-32 md:w-80 lg:w-96 xl:w-w_custom"
+                  className="border group-hover:border-navbar_color rounded-customRadius w-48 md:w-80 lg:w-96 xl:w-w_custom"
                 />
                 <div className="packageInfo group-hover:text-white text-navbar_color">
                   <h2 className="mb-4 text-md font-bold">
