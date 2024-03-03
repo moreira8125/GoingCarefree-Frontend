@@ -12,7 +12,7 @@ function Navbar() {
 
   return (
     <div
-      className=" bg-navbar_color flex w-full sticky top-0 justify-between flex-wrap h-[50px] md:h[70px] lg:h-[80px] xl:h-[90px]"
+      className=" bg-navbar_color flex w-full sticky top-0 justify-between flex-wrap h-[50px] md:h[70px] lg:h-[80px] xl:h-[100px]"
       style={{ zIndex: "1000" }}
     >
       <Link to={"/"} className="flex justify-center items-center">
