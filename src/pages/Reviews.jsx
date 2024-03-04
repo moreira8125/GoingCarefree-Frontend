@@ -260,7 +260,9 @@ function Reviews() {
             Send
           </button>
         </form>
+        
       </div>
+      
     </div>
   );
 }
