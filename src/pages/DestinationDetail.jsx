@@ -173,15 +173,15 @@ function DestinationDetail() {
       )}
     </div>
     <Link to="/reviews">
-      <h1 className="text-2xl mb-0 mt-6 font-extrabold text-navbar_color hover:underline">
+      <h1 className="text-2xl text-center mb-0 mt-6 font-extrabold text-navbar_color hover:underline">
         Click here to see other destinations' reviews</h1>
     </Link>
   </div>
 ) : (
-  <div className="flex flex-col items-center bg-navbar_color bg-opacity-20 justify-center mt-8 mb-8 mx-auto w-1/2 rounded-lg  ">
-    <h1 className="text-3xl mb-4 font-extrabold text-navbar_color">No reviews on this destination</h1>
+  <div className="flex flex-col items-center bg-navbar_color bg-opacity-20 justify-center mt-8 mb-8 mx-auto w-1/2 rounded-lg p-8 ">
+    <h1 className="text-3xl text-center mb-4 font-extrabold text-navbar_color">No reviews on this destination</h1>
     <Link to="/reviews">
-    <p className="text-2xl mb-0 mt-0 font-extrabold text-navbar_color hover:underline">Click here to leave us the first one</p>
+    <p className="text-2xl mb-0 mt-0  text-center font-extrabold text-navbar_color hover:underline">Click here to leave us the first one</p>
     </Link>
   </div>
 )}
