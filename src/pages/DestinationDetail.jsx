@@ -173,7 +173,7 @@ function DestinationDetail() {
       )}
     </div>
     <Link to="/reviews">
-      <h1 className="text-2xl text-center mb-0 mt-6 font-extrabold text-navbar_color hover:underline">
+      <h1 className="flex justify-center  text-2xl text-center mb-0 mt-6 font-extrabold text-navbar_color hover:underline">
         Click here to see other destinations' reviews</h1>
     </Link>
   </div>
