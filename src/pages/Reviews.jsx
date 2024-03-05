@@ -3,6 +3,8 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import axios from "axios";
 import bgImage from "../../public/images/nature6.png";
 import { Link } from "react-router-dom";
+import greenTick from "../../public/images/greenTick.png";
+
 
 function Reviews() {
   const [reviews, setReviews] = useState([]);
@@ -19,7 +21,12 @@ function Reviews() {
 
   const [showForm, setShowForm] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [submitted, setSubmitted] = useState(false);
 
+
+  const handleOutsideClick = () => {
+    setSubmitted(false);
+  };
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/reviews`)
@@ -102,10 +109,20 @@ function Reviews() {
       rate: newRating,
     };
 
+    setTimeout(() => {
+      setSubmitted(false);
+    }, 3000);
+
+    document.addEventListener("click", () => {
+      clearTimeout();
+      handleOutsideClick();
+    });
+  
     axios
       .post(`${import.meta.env.VITE_API_URL}/reviews`, newReview)
       .then(() => axios.get(`${import.meta.env.VITE_API_URL}/reviews`))
       .then((result) => {
+        setSubmitted(true);
         setReviews(result.data);
         setNewName("");
         setNewCountry("");
@@ -116,6 +133,7 @@ function Reviews() {
       .catch((err) => {
         console.log(err);
       });
+
   };
 
   return (
@@ -262,6 +280,15 @@ function Reviews() {
         </form>
         
       </div>
+      {submitted && (
+          <div className="bg-white flex flex-col justify-center  items-center absolute  mx-auto border rounded-lg mt-10 top-1/3 p-8">
+            <img className="w-20 mb-4 " src={greenTick} />
+            <h1 className="font-helvetiva font-bold  text-gray-900">
+              Thank you!
+            </h1>
+            <h2 className=" text-gray-900">You review was uploaded succesfully</h2>
+          </div>
+        )}
       
     </div>
   );
