@@ -33,13 +33,30 @@ function Contacts() {
     });
   }
 
+  function heightToRestFunction (){
+    if (window.innerWidth >= 1280) { 
+      return 109; 
+    }  else if(window.innerWidth >= 1024){
+        return 80}
+        else if(window.innerWidth >= 768){
+            return 62
+          }else{
+            return 0
+          }
+        
+      
+    
+  ;
+}
+const heightToRest = heightToRestFunction ()
+
   return (
     <>
       <div
         className="h-full pt-16 bg-cover bg-center flex justify-center items-center "
         style={{
           backgroundImage: `url(${bgImage})`,
-          height: "calc(100vh - 100px)",
+          height: `calc(100vh - ${heightToRest}px)`,
         }}
       >
         <div className="flex flex-col pb-36 text-center  ">
