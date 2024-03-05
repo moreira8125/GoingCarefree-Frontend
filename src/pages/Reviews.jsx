@@ -281,13 +281,15 @@ function Reviews() {
         
       </div>
       {submitted && (
-               <div className="bg-white flex flex-col justify-center  items-center absolute  mx-auto border rounded-lg mt-10 top-1/2 p-8">
-            <img className="w-20 mb-4 " src={greenTick} />
-            <h1 className="font-helvetiva font-bold  text-gray-900">
-              Thank you!
-            </h1>
-            <h2 className=" text-gray-900">You review was uploaded succesfully</h2>
-          </div>
+              <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10">
+              <div className="bg-white flex flex-col justify-center items-center border rounded-lg p-8">
+                <img className="w-20 mb-4" src={greenTick} alt="Success" />
+                <h1 className="font-helvetica font-bold text-gray-900">
+                  Thank you!
+                </h1>
+                <h2 className="text-gray-900">Your review was uploaded successfully</h2>
+              </div>
+            </div>
         )}
       
     </div>

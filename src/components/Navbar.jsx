@@ -46,7 +46,7 @@ function Navbar() {
         </NavLink>
       </div>
 
-      <div class=" xl:hidden text-xl text-white flex  w-1/6 items-center justify-center  ">
+      <div className=" xl:hidden text-xl text-white flex  w-1/6 items-center justify-center  ">
         <button onClick={toggleNavbar}>
           {isOpen ? (
             <i className="fi fi-rs-x"></i>

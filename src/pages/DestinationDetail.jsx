@@ -178,7 +178,7 @@ function DestinationDetail() {
     </Link>
   </div>
 ) : (
-  <div className="flex flex-col items-center bg-navbar_color bg-opacity-20 justify-center mt-8 p-9 mx-auto w-1/2 rounded-lg  ">
+  <div className="flex flex-col items-center bg-navbar_color bg-opacity-20 justify-center mt-8 mb-8 mx-auto w-1/2 rounded-lg  ">
     <h1 className="text-3xl mb-4 font-extrabold text-navbar_color">No reviews on this destination</h1>
     <Link to="/reviews">
     <p className="text-2xl mb-0 mt-0 font-extrabold text-navbar_color hover:underline">Click here to leave us the first one</p>
