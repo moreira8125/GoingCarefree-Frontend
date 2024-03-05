@@ -11,6 +11,7 @@ function DestinationDetail() {
   const [reviews, setReviews] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [windowWidth, setWindowWidth] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -147,34 +148,43 @@ function DestinationDetail() {
             </div>
           )}
 
-{filteredReviews.length > 0 &&(<div className="flex flex-col items-center bg-navbar_color bg-opacity-20 justify-center mt-8 p-9">
-            <h1 className="text-3xl mb-8  font-extrabold text-navbar_color">Reviews</h1>
-            <div className=" flex ">
-            {filteredReviews.length > reviewsToShow && (
-            <button onClick={prevReview}><BsChevronCompactLeft size={30} /></button>
-            )}
-            {displayedReviews.map((review) => (
-              <div key={review.id} className="review-card p-4 border-2 rounded-lg mx-2 lg:w-[500px] min-h-[360px] bg-white md:w-[300px] sm:w-[300px]">
-                <div className="flex mb-0">
-                  <img src={review.flag} className="w-8 mb-4 mr-4" alt="Flag" />
-                  <h2 className="text-lg font-extrabold mb-2">{review.name}</h2>
-                </div>
-                <div className="flex flex-col justify-start mb-2">
-                  <h3 className="text-md font-semibold mb-2">{review.package}</h3>
-                  <img src={review.rate} className="w-32 h-auto" alt="Rating" />
-                </div>
-                <p className="text-sm">{review.comment}</p>
-              </div>
-            ))}
-             {filteredReviews.length > reviewsToShow &&(
-            <button onClick={nextReview}><BsChevronCompactRight size={30} /></button>
+{filteredReviews.length > 0 ? (
+  <div className="flex flex-col items-center bg-navbar_color bg-opacity-20 justify-center mt-8 p-9">
+    <h1 className="text-3xl mb-8 font-extrabold text-navbar_color">Reviews</h1>
+    <div className="flex">
+      {filteredReviews.length > reviewsToShow && (
+        <button onClick={prevReview}><BsChevronCompactLeft size={30} /></button>
       )}
-            </div>
-            <Link to="/reviews">
-            <h1 className="text-2xl mb-0 mt-6 font-extrabold text-navbar_color  hover:underline">
-              Click here to see other destinations' reviews</h1>
-            </Link>
-          </div>)}
+      {displayedReviews.map((review) => (
+        <div key={review.id} className="review-card p-4 border-2 rounded-lg mx-2 lg:w-[500px] min-h-[360px] bg-white md:w-[300px] sm:w-[300px]">
+          <div className="flex mb-0">
+            <img src={review.flag} className="w-8 mb-4 mr-4" alt="Flag" />
+            <h2 className="text-lg font-extrabold mb-2">{review.name}</h2>
+          </div>
+          <div className="flex flex-col justify-start mb-2">
+            <h3 className="text-md font-semibold mb-2">{review.package}</h3>
+            <img src={review.rate} className="w-32 h-auto" alt="Rating" />
+          </div>
+          <p className="text-sm">{review.comment}</p>
+        </div>
+      ))}
+      {filteredReviews.length > reviewsToShow && (
+        <button onClick={nextReview}><BsChevronCompactRight size={30} /></button>
+      )}
+    </div>
+    <Link to="/reviews">
+      <h1 className="text-2xl mb-0 mt-6 font-extrabold text-navbar_color hover:underline">
+        Click here to see other destinations' reviews</h1>
+    </Link>
+  </div>
+) : (
+  <div className="flex flex-col items-center bg-navbar_color bg-opacity-20 justify-center mt-8 p-9 mx-auto w-1/2 rounded-lg  ">
+    <h1 className="text-3xl mb-4 font-extrabold text-navbar_color">No reviews on this destination</h1>
+    <Link to="/reviews">
+    <p className="text-2xl mb-0 mt-0 font-extrabold text-navbar_color hover:underline">Click here to leave us the first one</p>
+    </Link>
+  </div>
+)}
         </>
       ) : (
         <h2 className="mb-4 mt-20 text-xl font-bold">Loading...</h2>
