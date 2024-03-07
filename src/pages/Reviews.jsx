@@ -5,11 +5,9 @@ import bgImage from "../../public/images/nature6.png";
 import { Link } from "react-router-dom";
 import greenTick from "../../public/images/greenTick.png";
 
-
 function Reviews() {
   const [reviews, setReviews] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-
 
   const [countries, setCountries] = useState([]);
   const [destinations, setDestinations] = useState([]);
@@ -19,17 +17,15 @@ function Reviews() {
   const [newComment, setNewComment] = useState("");
   const [newRating, setNewRating] = useState("");
 
-  const [showForm, setShowForm] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [submitted, setSubmitted] = useState(false);
-
 
   const handleOutsideClick = () => {
     setSubmitted(false);
   };
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/reviews`)
+      .get(`${import.meta.env.VITE_API_URL}/reviews?_sort=id&_order=desc`)
       .then((result) => {
         setReviews(result.data);
       })
@@ -59,16 +55,15 @@ function Reviews() {
       });
   }, []);
 
-
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
     };
 
-    window.addEventListener('resize', handleWindowResize);
+    window.addEventListener("resize", handleWindowResize);
 
     return () => {
-      window.removeEventListener('resize', handleWindowResize);
+      window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
 
@@ -86,18 +81,23 @@ function Reviews() {
     });
   };
   const getReviewsToShow = () => {
-    if (windowWidth >= 1700) { 
-      return 3; 
-    } else if (windowWidth >= 1200) { 
-      return 2; 
-    } else  {
-      return 1; 
+    if (windowWidth >= 1700) {
+      return 3;
+    } else if (windowWidth >= 1200) {
+      return 2;
+    } else {
+      return 1;
     }
   };
   const reviewsToShow = getReviewsToShow();
-  const displayedReviews = reviews.length > 0 ? reviews.slice(currentIndex, currentIndex + reviewsToShow) : [];
+  const displayedReviews =
+    reviews.length > 0
+      ? reviews.slice(currentIndex, currentIndex + reviewsToShow)
+      : [];
   if (displayedReviews.length < reviewsToShow && reviews.length > 0) {
-    displayedReviews.push(...reviews.slice(0, reviewsToShow - displayedReviews.length));
+    displayedReviews.push(
+      ...reviews.slice(0, reviewsToShow - displayedReviews.length)
+    );
   }
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -117,10 +117,14 @@ function Reviews() {
       clearTimeout();
       handleOutsideClick();
     });
-  
+
     axios
       .post(`${import.meta.env.VITE_API_URL}/reviews`, newReview)
-      .then(() => axios.get(`${import.meta.env.VITE_API_URL}/reviews`))
+      .then(() =>
+        axios.get(
+          `${import.meta.env.VITE_API_URL}/reviews?_sort=id&_order=desc`
+        )
+      )
       .then((result) => {
         setSubmitted(true);
         setReviews(result.data);
@@ -133,7 +137,6 @@ function Reviews() {
       .catch((err) => {
         console.log(err);
       });
-
   };
 
   return (
@@ -266,7 +269,7 @@ function Reviews() {
               cols="50"
               rows="10"
               className="border text-white text-sm rounded-lg block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 dark:text-white mb-4 w-full md:w-fit"
-               //className="border  text-gray-900 text-sm rounded-lg ring-blue-500 block p-2.5 bg-white border-gray-600 placeholder-gray-400 dark:text-navbar_color bg-opacity-50 w-full md:w-fit"
+              //className="border  text-gray-900 text-sm rounded-lg ring-blue-500 block p-2.5 bg-white border-gray-600 placeholder-gray-400 dark:text-navbar_color bg-opacity-50 w-full md:w-fit"
               onChange={(e) => {
                 setNewComment(e.target.value);
               }}
@@ -278,20 +281,20 @@ function Reviews() {
             Send
           </button>
         </form>
-        
       </div>
       {submitted && (
-              <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10">
-              <div className="bg-white flex flex-col justify-center items-center border rounded-lg p-8">
-                <img className="w-20 mb-4" src={greenTick} alt="Success" />
-                <h1 className="font-helvetica font-bold text-gray-900">
-                  Thank you!
-                </h1>
-                <h2 className="text-gray-900">Your review was uploaded successfully</h2>
-              </div>
-            </div>
-        )}
-      
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10">
+          <div className="bg-white flex flex-col justify-center items-center border rounded-lg p-8">
+            <img className="w-20 mb-4" src={greenTick} alt="Success" />
+            <h1 className="font-helvetica font-bold text-gray-900">
+              Thank you!
+            </h1>
+            <h2 className="text-gray-900">
+              Your review was uploaded successfully
+            </h2>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
