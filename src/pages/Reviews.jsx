@@ -3,6 +3,8 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import axios from "axios";
 import bgImage from "../../public/images/nature6.png";
 import { Link } from "react-router-dom";
+import greenTick from "../../public/images/greenTick.png";
+
 
 function Reviews() {
   const [reviews, setReviews] = useState([]);
@@ -19,7 +21,12 @@ function Reviews() {
 
   const [showForm, setShowForm] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [submitted, setSubmitted] = useState(false);
 
+
+  const handleOutsideClick = () => {
+    setSubmitted(false);
+  };
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/reviews`)
@@ -102,10 +109,20 @@ function Reviews() {
       rate: newRating,
     };
 
+    setTimeout(() => {
+      setSubmitted(false);
+    }, 3000);
+
+    document.addEventListener("click", () => {
+      clearTimeout();
+      handleOutsideClick();
+    });
+  
     axios
       .post(`${import.meta.env.VITE_API_URL}/reviews`, newReview)
       .then(() => axios.get(`${import.meta.env.VITE_API_URL}/reviews`))
       .then((result) => {
+        setSubmitted(true);
         setReviews(result.data);
         setNewName("");
         setNewCountry("");
@@ -116,6 +133,7 @@ function Reviews() {
       .catch((err) => {
         console.log(err);
       });
+
   };
 
   return (
@@ -135,7 +153,7 @@ function Reviews() {
         {displayedReviews.map((oneReview) => (
           <div
             key={oneReview.id}
-            className=" review-card p-4 border-2 rounded-lg mx-2 w-[500px] min-h-[360px]   bg-white"
+            className=" review-card p-4 border-2 rounded-lg mx-2 lg:w-[500px]  min-h-[360px]   bg-white  md:w-[300px] sm:w-[300px] "
           >
             <div className="flex mb-0 ">
               <img src={oneReview.flag} className="w-8 mb-4 mr-4" />
@@ -247,7 +265,8 @@ function Reviews() {
             <textarea
               cols="50"
               rows="10"
-              className="border text-white text-sm rounded-lg block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 dark:text-white mb-4"
+              className="border text-white text-sm rounded-lg block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 dark:text-white mb-4 w-full md:w-fit"
+               //className="border  text-gray-900 text-sm rounded-lg ring-blue-500 block p-2.5 bg-white border-gray-600 placeholder-gray-400 dark:text-navbar_color bg-opacity-50 w-full md:w-fit"
               onChange={(e) => {
                 setNewComment(e.target.value);
               }}
@@ -259,7 +278,20 @@ function Reviews() {
             Send
           </button>
         </form>
+        
       </div>
+      {submitted && (
+              <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10">
+              <div className="bg-white flex flex-col justify-center items-center border rounded-lg p-8">
+                <img className="w-20 mb-4" src={greenTick} alt="Success" />
+                <h1 className="font-helvetica font-bold text-gray-900">
+                  Thank you!
+                </h1>
+                <h2 className="text-gray-900">Your review was uploaded successfully</h2>
+              </div>
+            </div>
+        )}
+      
     </div>
   );
 }

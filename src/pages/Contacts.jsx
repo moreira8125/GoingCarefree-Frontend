@@ -33,13 +33,30 @@ function Contacts() {
     });
   }
 
+  function heightToRestFunction (){
+    if (window.innerWidth >= 1280) { 
+      return 109; 
+    }  else if(window.innerWidth >= 1024){
+        return 80}
+        else if(window.innerWidth >= 768){
+            return 62
+          }else{
+            return 0
+          }
+        
+      
+    
+  ;
+}
+const heightToRest = heightToRestFunction ()
+
   return (
     <>
       <div
         className="h-full pt-12  bg-cover bg-center flex justify-center items-center "
         style={{
           backgroundImage: `url(${bgImage})`,
-          height: "calc(100vh - 100px)",
+          height: `calc(100vh - ${heightToRest}px)`,
         }}
       >
         <div className="flex flex-col pb-36 text-center  ">
@@ -98,14 +115,16 @@ function Contacts() {
           </form>
         </div>
         {submitted && (
-          <div className="bg-white flex flex-col justify-center  items-center absolute  mx-auto border rounded-lg  top-1/3 p-8">
-            <img className="w-20 mb-4 " src={greenTick} />
-            <h1 className="font-helvetiva font-bold  text-gray-900">
-              Thank you!
-            </h1>
-            <h2 className=" text-gray-900">You message was sent succesfully</h2>
-          </div>
-        )}
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10">
+    <div className="bg-white flex flex-col justify-center items-center border rounded-lg p-8">
+      <img className="w-20 mb-4" src={greenTick} alt="Success" />
+      <h1 className="font-helvetica font-bold text-gray-900">
+        Thank you!
+      </h1>
+      <h2 className="text-gray-900">Your message was sent successfully</h2>
+    </div>
+  </div>
+)}
       </div>
 
       <footer className="flex flex-col items-center fixed bottom-0 w-full bg-navbar_color text-white pb-4 pt-4">
