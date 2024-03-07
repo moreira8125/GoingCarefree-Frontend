@@ -169,7 +169,7 @@ function Destinations() {
                   className="border group-hover:border-navbar_color rounded-customRadius w-48 md:w-80 lg:w-96 xl:w-w_custom"
                 />
                 <div className="packageInfo group-hover:text-white text-navbar_color">
-                  <h2 className="mb-4 text-md font-bold">
+                  <h2 className="mb-4 text-md xl:text-2xl font-bold">
                     {oneDestination.name}
                   </h2>
                   <p className="hidden md:block">{oneDestination.hook}</p>

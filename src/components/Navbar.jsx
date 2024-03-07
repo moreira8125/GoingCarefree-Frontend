@@ -56,28 +56,32 @@ function Navbar() {
         </button>
       </div>
       {isOpen && (
-        <div className="flex flex-col items-center basis-full pt-4 bg-navbar_color">
+        <div className="flex flex-col items-center basis-full pt-4 bg-navbar_color xl:hidden">
           <NavLink
             className="text-navlink_color font-bold text-2xl mb-4 hover:text-white"
             to={"/"}
+            onClick={toggleNavbar}
           >
             Home
           </NavLink>
           <NavLink
             className="text-navlink_color font-bold text-2xl mb-4 hover:text-white"
             to={"/destinations"}
+            onClick={toggleNavbar}
           >
             Destinations
           </NavLink>
           <NavLink
             className="text-navlink_color font-bold text-2xl mb-4 hover:text-white"
             to={"/reviews"}
+            onClick={toggleNavbar}
           >
             Reviews
           </NavLink>
           <NavLink
             className="text-navlink_color font-bold text-2xl mb-4 hover:text-white"
             to={"/contacts"}
+            onClick={toggleNavbar}
           >
             Contacts
           </NavLink>
