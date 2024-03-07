@@ -112,7 +112,7 @@ function DestinationDetail() {
       {destination ? (
         <>
           <div className="flex flex-col items-center justify-center">
-            <h1 className="text-2xl md:text-3xl lg:text-4xl  font-extrabold text-navbar_color">
+            <h1 className="text-2xl text-center md:text-3xl lg:text-4xl  font-extrabold text-navbar_color">
               {destination.name}
             </h1>
             <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-navbar_color">
