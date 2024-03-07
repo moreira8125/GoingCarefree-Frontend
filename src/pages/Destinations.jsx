@@ -72,7 +72,6 @@ function Destinations() {
             Click Here For Your Perfect Vacation
           </h3>
         </Link>
-
         {showForm && (
           <form
             className="destinationsForm lg:w-48  w-36 mx-auto"
@@ -154,7 +153,6 @@ function Destinations() {
             Loading...
           </h2>
         )}
-
         {destinations.map((oneDestination) => {
           return (
             <Link
