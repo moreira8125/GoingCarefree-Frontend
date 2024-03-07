@@ -145,7 +145,7 @@ function Destinations() {
         )}
 
         {!fetching && destinations.length === 0 && (
-          <h2 className="mb-4 mt-20 text-xl font-bold">
+          <h2 className="mb-4 mt-20 text-xl lg:text-4xl font-bold text-navbar_color">
             Sorry! We have no destinations matching your criteria.
           </h2>
         )}
