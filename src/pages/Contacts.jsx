@@ -36,7 +36,7 @@ function Contacts() {
   return (
     <>
       <div
-        className="h-full pt-16 bg-cover bg-center flex justify-center items-center "
+        className="h-full pt-12  bg-cover bg-center flex justify-center items-center "
         style={{
           backgroundImage: `url(${bgImage})`,
           height: "calc(100vh - 100px)",
