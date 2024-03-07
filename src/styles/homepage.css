@@ -1,0 +1,77 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+  }
+
+.firstContainer {
+    background-image: url('/images/nature3.png');
+    background-position: center;
+    background-size:cover;
+    width: 100%;
+    box-sizing: border-box;
+
+}
+
+.welcome{
+
+    font-size: 4rem;
+    font-weight: bold;
+    color:white;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+   position: sticky;
+
+}
+
+.videoWrapper {
+  width: 100vw; /* 100% of the viewport width */
+  height: 100vh; /* 100% of the viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reactPlayer {
+  /* position: absolute;  */
+  /* top: 0; */
+  left: 0;
+  bottom: 0;
+  
+}
+
+/* .video-wrapper {
+    position: relative;
+    width: 100vw; 
+    margin: auto;
+
+    background-image: url('/images/nature3.png');
+    background-position: center;
+    background-size:cover;
+    width: 100%;
+    height: 100%; 
+    box-sizing: border-box;
+    min-height: 100%; 
+  } */
+
+  video{
+    border-radius: 20px;
+    padding-bottom: 4rem;
+  }
+  
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%;
+    cursor: pointer;
+  
+  }
+  
+
+  .video-playing .play-button {
+    display: none;
+  }
+  
+  
