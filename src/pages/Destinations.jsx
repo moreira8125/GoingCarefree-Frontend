@@ -61,10 +61,10 @@ function Destinations() {
 
   const skeletonDestination = () => {
     return (
-      <div className="border-2 border-gray-500 rounded-customRadius h-96 flex my-20 gap-2 pt-8 px-8">
-        <div className=" rounded-customRadius h-72 w-w_custom bg-gray-400 animate-pulse flex items-center justify-center">
+      <div className="border-2 border-gray-500 rounded-customRadius h-96 flex flex-col md:flex-row my-20 gap-2 pt-8 px-8">
+        <div className="rounded-customRadius h-72 w-full md:w-w_custom bg-gray-400 animate-pulse flex items-center justify-center">
           <svg
-            className="w-96 h-24 text-gray-200 dark:text-gray-600"
+            className="w-24 h-24 text-gray-200 dark:text-gray-600"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -73,68 +73,68 @@ function Destinations() {
             <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
           </svg>
         </div>
-        <div className="flex flex-col w-2/4 gap-4 items-center animate-pulse">
-          <div className=" h-10 w-3/4 bg-gray-400 rounded-xl animate-pulse"></div>
-          <div className="flex flex-col gap-2">
-            <div class="flex items-center w-full">
-              <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-500 w-32"></div>
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
+        <div className="flex flex-col w-full md:w-2/4 gap-4 items-center animate-pulse">
+          <div className="h-10 w-3/4 bg-gray-400 rounded-xl"></div>
+          <div className="flex flex-col gap-2 w-full px-4 md:px-0">
+            <div className="flex items-center w-full">
+              <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-500 w-32"></div>
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
             </div>
-            <div class="flex items-center w-full max-w-[480px]">
-              <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-500 w-full"></div>
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
+            <div className="flex items-center w-full max-w-[480px]">
+              <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-500 w-full"></div>
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
             </div>
-            <div class="flex items-center w-full max-w-[400px]">
-              <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
-              <div class="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-500 w-80"></div>
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
+            <div className="flex items-center w-full max-w-[400px]">
+              <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
+              <div className="h-2.5 ml-2 bg-gray-200 rounded-full dark:bg-gray-500 w-80"></div>
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
             </div>
-            <div class="flex items-center w-full max-w-[480px]">
-              <div class="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-500 w-full"></div>
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
+            <div className="flex items-center w-full max-w-[480px]">
+              <div className="h-2.5 ml-2 bg-gray-200 rounded-full dark:bg-gray-500 w-full"></div>
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
             </div>
-            <div class="flex items-center w-full max-w-[440px]">
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-32"></div>
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
-              <div class="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-500 w-full"></div>
+            <div className="flex items-center w-full max-w-[440px]">
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-32"></div>
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
+              <div className="h-2.5 ml-2 bg-gray-200 rounded-full dark:bg-gray-500 w-full"></div>
             </div>
-            <div class="flex items-center w-full max-w-[360px]">
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
-              <div class="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-500 w-80"></div>
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
+            <div className="flex items-center w-full max-w-[360px]">
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
+              <div className="h-2.5 ml-2 bg-gray-200 rounded-full dark:bg-gray-500 w-80"></div>
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
             </div>
-            <div class="flex items-center w-full max-w-[360px]">
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
-              <div class="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-500 w-80"></div>
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
+            <div className="flex items-center w-full max-w-[360px]">
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
+              <div className="h-2.5 ml-2 bg-gray-200 rounded-full dark:bg-gray-500 w-80"></div>
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
             </div>
-            <div class="flex items-center w-full">
-              <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-500 w-32"></div>
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
+            <div className="flex items-center w-full">
+              <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-500 w-32"></div>
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
             </div>
-            <div class="flex items-center w-full max-w-[480px]">
-              <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-500 w-full"></div>
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
+            <div className="flex items-center w-full max-w-[480px]">
+              <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-500 w-full"></div>
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
             </div>
-            <div class="flex items-center w-full max-w-[400px]">
-              <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
-              <div class="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-500 w-80"></div>
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
+            <div className="flex items-center w-full max-w-[400px]">
+              <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
+              <div className="h-2.5 ml-2 bg-gray-200 rounded-full dark:bg-gray-500 w-80"></div>
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
             </div>
-            <div class="flex items-center w-full max-w-[480px]">
-              <div class="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-500 w-full"></div>
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
+            <div className="flex items-center w-full max-w-[480px]">
+              <div className="h-2.5 ml-2 bg-gray-200 rounded-full dark:bg-gray-500 w-full"></div>
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-full"></div>
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
             </div>
-            <div class="flex items-center w-full max-w-[440px]">
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-32"></div>
-              <div class="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
-              <div class="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-500 w-full"></div>
+            <div className="flex items-center w-full max-w-[440px]">
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-32"></div>
+              <div className="h-2.5 ml-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24"></div>
+              <div className="h-2.5 ml-2 bg-gray-200 rounded-full dark:bg-gray-500 w-full"></div>
             </div>
           </div>
         </div>
